@@ -55,6 +55,26 @@ Términos clave del proyecto. Enlazados desde el resto de notas.
 - **Predicado** — la condición que se prueba (ej. `edad ≥ 18`, `país ∈ permitidos`).
 - **Registro KYC on-chain** — contrato que guarda qué addresses están verificadas (sin
   PII).
+- **[[Prueba de Persona Única]] (proof of personhood)** — prueba de que quien se registra
+  es una persona **real**, **única** (una persona = una identidad) y **anónima** (sin
+  exponer PII). Es el núcleo del proyecto. → [[IDEA]]
+- **Ataque Sybil** — cuando una sola persona crea muchas identidades/cuentas falsas para
+  inflar votos u opiniones. La prueba de persona única lo previene (vía nullifier).
+- **Nullifier de unicidad** — nullifier determinístico por persona: la misma persona
+  siempre produce el mismo, de modo que el contrato detecta y rechaza un segundo registro,
+  sin revelar quién es. → [[Prueba de Persona Única]]
+- **Anonimato verificado** — sos anónimo (PII oculta) pero **verificado** como persona
+  real y única; tu actividad queda atada a una identidad persistente. → [[Identidad Pública vs Anónima]]
+
+## Plataforma / impacto social
+
+- **[[Plataforma de Opinión Verificada]]** — la app sobre el núcleo de identidad: opinar
+  en foros y publicar artículos/estudios como persona verificada.
+- **Curaduría** — proceso de revisar y filtrar contenido por veracidad y calidad sin
+  silenciar opiniones legítimas. → [[Curaduría y Agentes Validadores]]
+- **Agente validador** — agente de IA que cura contenido automáticamente y **deriva a
+  moderadores humanos** los casos que no sabe resolver.
+- **[[zkME]]** — KYC con ZK de referencia usado en otras blockchains (no en Stellar).
 
 ## Herramientas
 

@@ -10,8 +10,9 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 
 ## 🎯 Empieza aquí
 
-- [[Vision General]] — qué construimos y por qué
-- [[Problema y Solucion]] — el dolor que resolvemos
+- [[IDEA]] — **la visión del proyecto** (léela primero)
+- [[Prueba de Persona Única]] — el núcleo técnico que nos diferencia
+- [[Plataforma de Opinión Verificada]] — la aplicación con impacto social
 - [[Arquitectura General]] — cómo encaja todo
 - [[Flujo de KYC]] — el recorrido del usuario paso a paso
 
@@ -23,10 +24,13 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 - [[Recursos Oficiales]]
 
 ### 02 · Concepto
-- [[Vision General]]
+- [[Prueba de Persona Única]]
+- [[Plataforma de Opinión Verificada]]
+- [[Curaduría y Agentes Validadores]]
+- [[Identidad Pública vs Anónima]]
 - [[Problema y Solucion]]
-- [[Casos de Uso]]
 - [[Glosario]]
+- [[Vision General]] · [[Casos de Uso]] *(genéricas — pendiente realinear a [[IDEA]])*
 
 ### 03 · Stellar
 - [[Stellar y Soroban]]

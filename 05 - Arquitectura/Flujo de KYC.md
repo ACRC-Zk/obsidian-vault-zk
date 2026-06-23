@@ -1,4 +1,4 @@
-# Flujo de KYC
+ # Flujo de KYC
 
 El recorrido completo, paso a paso, desde que el usuario verifica su identidad hasta que
 una dApp confía en él. Componentes en [[Arquitectura General]].
