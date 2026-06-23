@@ -4,46 +4,58 @@ Esta vault es **documentación**. El código de producción (circuitos, contrato
 vive en un **repositorio separado** que será el entregable open-source del hackathon
 (requisito de [[Reglas y Requisitos]]).
 
-> 📌 Decisión: mantener docs (esta vault) y código en repos distintos para que la vault
-> de Obsidian quede limpia. Enlazar el repo de código aquí cuando exista:
-> **Repo de código:** _(pendiente de crear)_
+> 📌 **Decisiones:**
+> - **Docs ↔ código en repos distintos** (esta vault queda limpia).
+> - **Un solo monorepo, organizado por capas** (`identity/` + `platform/`): refleja las dos
+>   capas de [[IDEA]] y deja explícito que **todo funciona junto** pero las capas son claras.
+> - Organización GitHub: **`ACRC-Zk`** · **Repo de código:** `beHuman`
+>   (https://github.com/ACRC-Zk/beHuman) — **✅ scaffolding por capas creado**.
+> - **Frontend único en React + Vite + TypeScript** (`web/`): te verificás (capa 1) y eso
+>   desbloquea opinar/publicar (capa 2).
+> - **El puente entre capas es uno solo:** `is_verified(address)` del contrato `kyc_verifier`.
+> - **Capa 2 híbrida:** ancla on-chain (`opinion_board`) + contenido off-chain (`platform/api`).
+> - **Identidad en la plataforma: seudónimo estable** (posts linkeables, PII oculta) →
+>   [[Identidad Pública vs Anónima]].
 
-## Estructura propuesta del repo de código
+## Estructura del monorepo (creada, por capas)
 
 ```text
-stellar-zk-kyc/
-├── README.md                  # Qué es, cómo correrlo, qué hace el ZK (requisito)
-├── circuits/                  # Circuito ZK (Circom)
-│   ├── kyc.circom
-│   ├── package.json
-│   └── scripts/
-│       ├── compile.sh         # circom → r1cs/wasm
-│       ├── setup.sh           # powers of tau + zkey
-│       └── prove.sh           # genera prueba de ejemplo
-├── contracts/                 # Contrato Soroban (Rust)
-│   └── kyc_verifier/
-│       ├── src/lib.rs         # verify_and_register + is_verified
-│       ├── Cargo.toml
-│       └── tests/
-├── issuer/                    # Issuer KYC mock (off-chain)
-│   └── src/                   # firma credenciales de prueba
-├── client/                    # Cliente / demo (CLI o web)
-│   └── src/                   # orquesta: credencial → prueba → tx Stellar
-├── scripts/
-│   ├── deploy_testnet.sh
-│   └── e2e_demo.sh            # flujo completo para el video
-└── docs/
-    └── README → enlaza a esta vault de Obsidian
+beHuman/
+├── README.md · CLAUDE.md · Cargo.toml · package.json · Makefile · .env.example
+│
+├── identity/                 # ── CAPA 1 · KYC con ZK ──
+│   ├── circuits/             #   Circom — src/kyc.circom + scripts (compile/setup/prove)
+│   ├── contracts/            #   Soroban — kyc_verifier (verify_and_register + is_verified)
+│   └── issuer/               #   Issuer KYC mock (TS)
+│
+├── platform/                 # ── CAPA 2 · Plataforma de opinión ──
+│   ├── contracts/            #   Soroban — opinion_board (ancla: autor verificado + hash)
+│   ├── api/                  #   Backend: feed, posts, contenido off-chain (TS)
+│   └── curation/             #   Agentes validadores (IA, Claude API) + moderación (TS)
+│
+├── packages/
+│   ├── sdk/                  #   Prover + tx Stellar (generateProof · buildVerifyTx · anchorPost)
+│   └── shared/               #   Tipos TS compartidos (VerifiedAddress · Post · CurationVerdict)
+│
+├── web/                      # Frontend React + Vite + TS (único)
+├── scripts/                  # deploy_testnet.sh · e2e_demo.sh
+└── docs/                     # enlaza a esta vault
 ```
+
+> Ambos contratos Rust son miembros del **workspace Cargo raíz** (`/Cargo.toml`):
+> `stellar contract build` compila las dos capas. Las **skills de IA** (`stellar-dev`,
+> `openzeppelin-skills`) están en `.claude/settings.json` → [[Skills de IA para construir]].
 
 ## Mapeo docs → código
 
 | Nota de la vault | Componente de código |
 |---|---|
-| [[Diseño del Circuito ZK]] | `circuits/kyc.circom` |
-| [[Contrato Verificador (Soroban)]] | `contracts/kyc_verifier/src/lib.rs` |
-| [[Modelo de Datos]] | credencial en `issuer/`, storage en `contracts/` |
-| [[Flujo de KYC]] | `client/` + `scripts/e2e_demo.sh` |
+| [[Diseño del Circuito ZK]] | `identity/circuits/src/kyc.circom` |
+| [[Contrato Verificador (Soroban)]] | `identity/contracts/kyc_verifier/src/lib.rs` |
+| [[Modelo de Datos]] | credencial en `identity/issuer/`, storage en `identity/contracts/` + `packages/shared` |
+| [[Flujo de KYC]] | `packages/sdk/` + `web/` + `scripts/e2e_demo.sh` |
+| [[Plataforma de Opinión Verificada]] | `platform/contracts/opinion_board` + `platform/api` |
+| [[Curaduría y Agentes Validadores]] | `platform/curation` |
 | [[Plan de Demo]] | `scripts/e2e_demo.sh` (lo que graba el video) |
 
 ## Convenciones

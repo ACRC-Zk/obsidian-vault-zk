@@ -55,16 +55,19 @@ Lo realista en ~7 días (ver [[Roadmap]]):
 Fuera de alcance del MVP (mencionar como *future work*): múltiples issuers federados,
 revocación de credenciales, recovery, soulbound tokens, UI pulida.
 
-## Ideas de nombre
+## Nombre del proyecto
 
-El proyecto aún no tiene nombre. Candidatos para brainstorming (combinan identidad +
-prueba + Stellar):
+> 🏷️ **Nombre de trabajo: `beHuman`** *(provisional, en proceso de definición)*.
+>
+> Captura el núcleo del producto: **proof of personhood** — demostrar que sos una persona
+> real y única ([[Prueba de Persona Única]]) sin revelar quién sos. El monorepo de código
+> vive bajo la organización **beHuman** en GitHub (ver [[Estructura del Codigo]]).
+
+Candidatos previos de brainstorming (por si reabrimos la decisión):
 
 - **zkID** / **StellID** / **Stellaris ID**
 - **Proof of Person(hood)** → **Proven**, **Prova**
 - **Veil** (velo = privacidad) · **Aegis** (escudo/compliance) · **Sello**
 - **Nova KYC** · **Anon-KYC** · **Privado**
-
-> Decisión pendiente — ver [[🏠 Home#❓ Decisiones abiertas]].
 
 Relacionado: [[Problema y Solucion]] · [[Casos de Uso]] · [[Glosario]]

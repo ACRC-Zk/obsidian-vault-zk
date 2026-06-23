@@ -67,4 +67,47 @@ flowchart LR
     L1 --> L2 --> L3 --> L4
 ```
 
-Relacionado: [[Flujo de KYC]] · [[Diseño del Circuito ZK]] · [[Modelo de Datos]] · [[Contrato Verificador (Soroban)]]
+## beHuman completo: las dos capas juntas
+
+La capa 4 (*dApp consumidora*) **es** la [[Plataforma de Opinión Verificada]]. Todo el
+sistema encaja así, y el **único punto de unión** entre la identidad y la plataforma es
+`is_verified(address)`:
+
+```mermaid
+flowchart TB
+    subgraph C1["🔐 CAPA 1 · Identidad (KYC-ZK)"]
+        ISS["Issuer mock"] --> PROV["Prover (circuito)"]
+        PROV --> VER["kyc_verifier (Soroban)"]
+        VER --> REG["✅ Registro: address → verificado + nullifier"]
+    end
+    subgraph C2["🗣️ CAPA 2 · Plataforma de opinión"]
+        API["Backend: feed / posts / contenido off-chain"]
+        CUR["🤖 Agentes curadores + 🧑‍⚖️ moderación"]
+        BOARD["opinion_board (ancla on-chain: autor + hash)"]
+    end
+    REG -->|"is_verified(address)?"| API
+    REG -->|"autor verificado"| BOARD
+    API --> CUR
+    style C1 fill:#e8f0fe
+    style C2 fill:#e6f4ea
+```
+
+- **Identidad en la plataforma:** seudónimo estable → [[Identidad Pública vs Anónima]].
+- **Almacenamiento capa 2:** híbrido (ancla on-chain + contenido off-chain).
+- **Curaduría:** off-chain (agentes IA + moderación) → [[Curaduría y Agentes Validadores]].
+
+### Mapeo arquitectura → código (monorepo `beHuman`)
+
+| Componente | Capa | Carpeta del repo |
+|---|---|---|
+| Issuer KYC (mock) | 1 | `identity/issuer/` |
+| Circuito + Prover | 1 | `identity/circuits/` + `packages/sdk/` |
+| KycVerifier + Registro | 1 | `identity/contracts/kyc_verifier/` |
+| Plataforma (ancla on-chain) | 2 | `platform/contracts/opinion_board/` |
+| Backend / feed / contenido | 2 | `platform/api/` |
+| Curaduría (agentes + moderación) | 2 | `platform/curation/` |
+| Frontend | — | `web/` |
+
+→ Estructura completa en [[Estructura del Codigo]].
+
+Relacionado: [[Flujo de KYC]] · [[Diseño del Circuito ZK]] · [[Modelo de Datos]] · [[Contrato Verificador (Soroban)]] · [[Plataforma de Opinión Verificada]]

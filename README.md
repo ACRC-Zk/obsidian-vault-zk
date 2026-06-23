@@ -28,6 +28,7 @@ Zero-Knowledge sobre la red Stellar** para la hackathon *Stellar Hacks: Real-Wor
 | `05 - Arquitectura` | Diseño del sistema, flujos, circuito y modelo de datos |
 | `06 - Implementacion` | Setup, estructura de código, roadmap y plan de demo |
 | `07 - Investigacion` | Notas sueltas, referencias y enlaces externos |
+| `09 - Tools` | Toolbox para construir el KYC: recursos, skills de IA, verificadores de referencia y plan de armado |
 | `templates` | Plantillas de notas |
 
 ## Workflow de git

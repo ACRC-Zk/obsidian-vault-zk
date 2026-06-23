@@ -58,19 +58,33 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 
 ### 07 · Investigación
 - [[Notas y Referencias]]
+- [[zkME]]
+
+### 09 · Tools 🧰
+- [[🧰 Tools — Índice]] — toolbox para construir el KYC
+- [[Recursos ZK & Privacy en Stellar]]
+- [[Skills de IA para construir]]
+- [[Verificadores ZK de referencia]]
+- [[Stack de Privacidad en Stellar]]
+- [[Plano del KYC inspirado en zkMe]]
+- [[Plan de armado con IA]]
 
 ---
 
 ## 📌 Estado actual
 
 - [x] Estructura de la vault creada
+- [x] **Monorepo `beHuman` scaffoldeado** (por capas: `identity/` + `platform/`) →
+  https://github.com/ACRC-Zk/beHuman · ver [[Estructura del Codigo]]
+- [x] Skills de IA instaladas en el repo → [[Skills de IA para construir]]
 - [ ] Decidir herramienta ZK definitiva (ver [[Comparativa de Herramientas ZK]])
-- [ ] Diseñar el circuito de credencial KYC ([[Diseño del Circuito ZK]])
-- [ ] Implementar contrato verificador en Soroban
+- [ ] Diseñar e implementar el circuito de credencial KYC ([[Diseño del Circuito ZK]])
+- [ ] Implementar contrato verificador en Soroban ([[Contrato Verificador (Soroban)]])
+- [ ] Implementar capa 2: `opinion_board` + backend + curaduría ([[Plataforma de Opinión Verificada]])
 - [ ] Demo end-to-end + video (3 min)
 
 ## ❓ Decisiones abiertas
 
-- **Nombre del proyecto:** aún sin definir → ideas en [[Vision General#Ideas de nombre]]
+- **Nombre del proyecto:** `beHuman` *(nombre de trabajo, en definición)* → [[Vision General#Nombre del proyecto]]
 - **Toolchain ZK:** Noir (favorito) vs Circom vs RISC Zero → [[Comparativa de Herramientas ZK]]
 - **Modelo de confianza del issuer:** ¿uno o varios emisores de KYC? → [[Modelo de Datos]]
