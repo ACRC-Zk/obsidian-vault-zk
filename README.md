@@ -36,6 +36,11 @@ Zero-Knowledge sobre la red Stellar** para la hackathon.
 | `09 - Tools` | Toolbox para construir el KYC: recursos, skills de IA, verificadores de referencia y plan de armado |
 | `templates` | Plantillas de notas |
 
+## Documentación pública (GitBook)
+
+La documentación para jurados, desarrolladores e integradores vive en [`docs/`](docs/README.md)
+(inglés primero, español después). Se publica vía GitBook Git Sync apuntando a la carpeta `docs/`.
+
 ## Workflow de git
 
 Esta vault es local y se commitea cuando haga falta. Sugerencia de flujo:
